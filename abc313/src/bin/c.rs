@@ -1,48 +1,33 @@
+// Approximate Equalization 2 (おおよそな平衝)
+// 平衝化
+// Aiを+1, Ajを-1することで各要素の差の最大を1にする
 use proconio::*;
-use std::cmp::Ordering;
 
 fn main() {
     input! {
         n: usize,
-        aa: [i64; n],
+        mut a: [usize; n], // 配列aの各要素を平衝化するには何回かかるか
     }
-    if aa.len() == 1 {
-        println!("0");
-        return;
-    }
-    let sum = aa.iter().sum::<i64>();
-    let ave = sum / (n as i64);
-    dbg!(&ave);
-    let mut set = vec![0; n];
-    for i in 0..n {
-        set[i] = ave - aa[i];
-    }
-    set.sort();
-    dbg!(&set);
-    let ret = set.binary_search_by(|&a| {
-        if a >= 0 {
-            Ordering::Greater
-        } else {
-            Ordering::Less
-        }
-    });
+    let sum = a.iter().sum::<usize>();
+    // 平衝化に必要な回数を求めれば良いので、昇順で並べ替え
+    a.sort();
 
-    let ret = match ret {
-        Ok(b) => b,
-        Err(e) => e,
-    };
-    let mut m = 0;
-    let mut p = 0;
-    for i in 0..n {
-        if i < ret {
-            m += set[i];
-        } else {
-            p += set[i]
-        }
+    // 配列aを平衝化した配列bを作る
+    // 平均で初期化
+    let mut b = vec![sum / n; n];
+    // 余りを後ろ側に配置
+    for i in 0..(sum % n) {
+        b[n - 1 - i] += 1;
     }
-    dbg!(m);
-    dbg!(p);
-    
+    // 各要素の差分の和を取る
+    let mut ans = 0;
+    for i in 0..n {
+        let a = a[i] as i64;
+        let b = b[i] as i64;
+        ans += (a - b).abs();
+    }
+    // 平衝化回数はその1/2
+    println!("{}", ans / 2);
 }
 
 
