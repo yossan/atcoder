@@ -1,7 +1,17 @@
 // 条件を満たす部分集合の数
+// DFS探索バージョン
 use proconio::*;
 
 const MOD: usize = 1_000_000_000 + 7;
+
+fn power<T>(a: T, b: T) -> T {
+	let mut p = a;
+	let mut ans = 1;
+}
+
+fn n_c_r(n: usize, r: usize) -> usize {
+	0
+}
 
 fn main() {
 	input! {

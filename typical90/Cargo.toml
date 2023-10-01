@@ -8,3 +8,5 @@ edition = "2021"
 [dependencies]
 proconio = "*"
 itertools = "*"
+ac-library-rs = { git = "https://github.com/rust-lang-ja/ac-library-rs.git"}
+
