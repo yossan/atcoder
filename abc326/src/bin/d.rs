@@ -40,7 +40,8 @@ fn main() {
 						}
 						if S[i][j] != R[i] {
 							// 先頭文字がR[i]と異なる
-							break 'c;
+							// break 'c;
+							continue 'c;
 						}
 						break;
 					}
@@ -54,7 +55,8 @@ fn main() {
 						}
 						if S[i][j] != C[j] {
 							// 先頭文字がC[i]と異なる
-							break 'c;
+							// break 'c;
+							continue 'c;
 						}
 						break;
 					}
@@ -63,7 +65,7 @@ fn main() {
 				println!("Yes");
 				for i in 0..N {
 					for j in 0..N {
-						print!("{} ", S[i][j]);
+						print!("{}", S[i][j]);
 					}
 					println!("");
 				}
