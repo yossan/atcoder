@@ -9,18 +9,13 @@ fn main() {
 	}
 	let mut set: HashSet<&[char]> = HashSet::new();
 	let mut i = 0;
-	let mut j = i;
-	while i <= n {
-		if s[i] == s[j] {
+	while i < n {
+		let mut j = i;
+		while j < n && s[i] == s[j] {
 			set.insert(&s[i..=j]);
 			j += 1;
-		} else {
-			i = j;
-			j = i;
 		}
-		if j >= n {
-			break;
-		}
+		i = j;
 	}
 	println!("{}", set.len());
 }
