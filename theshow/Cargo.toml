@@ -1,0 +1,8 @@
+[workspace]
+members = [
+	"abc330",
+]
+
+[workspace.dependencies]
+proconio = "0.4.5"
+
